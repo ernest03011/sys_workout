@@ -1,0 +1,16 @@
+{
+    "name": "manue/sys_workout",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core",
+            "Http\\": "Http"
+        }
+    },
+    "authors": [
+        {
+            "name": "Manuel De Jesus",
+            "email": "manuel.ernestodjs@gmail.com"
+        }
+    ],
+    "require": {}
+}
