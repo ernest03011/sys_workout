@@ -6,7 +6,8 @@ class Response
 {
   private const MAP = [
     'NOT_FOUND' => 404,
-    'FORBIDDEN' => 403
+    'FORBIDDEN' => 403, 
+    'UNAUTHORIZED' => 401
   ];
 
   public static function handler(string $resp)
