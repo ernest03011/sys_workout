@@ -9,10 +9,10 @@ class Database{
   private $statement;
   public $connection;
   
-  public function __construct($config) {
-    $dsn = 'Mysql:' . http_build_query($config, "", ";");
+  public function __construct() {
+    $dsn = "{$_ENV['DB_DRIVER']}:host={$_ENV['DB_HOST']};port={$_ENV['DB_PORT']};dbname={$_ENV['DB_NAME']};charset={$_ENV['DB_CHARSET']}";
 
-    $this->connection = new PDO($dsn, /* username */ null, /* password */ null, [
+    $this->connection = new PDO($dsn, /* username */ $_ENV['DB_USERNAME'], /* password */ $_ENV['DB_PASSWORD'], [
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
   }

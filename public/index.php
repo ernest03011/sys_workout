@@ -7,6 +7,9 @@ session_start();
 require BASE_PATH . "vendor/autoload.php";
 require BASE_PATH . "Core/functions.php";
 
+$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
+
 $router =  new \Core\Router();
 require BASE_PATH . 'routes.php';
 
