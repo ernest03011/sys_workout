@@ -57,10 +57,9 @@ class Router{
 
   }
 
-  function redirect($path){
-    header("location: {$path}");
+  function redirect($path, $replace = true, $response_code = 302){
+    header("location: {$path}", $replace, $response_code);
     exit();
   }
-
 
 }
