@@ -43,14 +43,14 @@ class JWTHandler
 
       $decode = JWT::decode($token, new Key($_ENV['JWT_KEY'], $_ENV['JWT_ALG']));
 
-      return $decode->data;
+      // An object is returned 
+      return $decode;
 
     } catch (\Exception $e) {
-      // $e;
+
       Session::flush();
 
-      // Session::destroy();
-      // A key is needed.
+      Session::destroy();
 
       Response::handler("UNAUTHORIZED");
     }
