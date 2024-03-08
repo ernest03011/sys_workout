@@ -61,9 +61,9 @@ class Router{
     return $_SERVER['HTTP_REFERER'];
   }
 
-  function redirect($path, $replace = true, $response_code = 302){
-    header("location: {$path}", $replace, $response_code);
-    exit();
+  public static function redirect($url, $replace = true, $response_code = 302){
+    header("location: {$url}", $replace, $response_code);
+    exit;
   }
 
 }
