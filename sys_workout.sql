@@ -20,13 +20,13 @@ CREATE TABLE UserRolesMap (
 );
 
 CREATE TABLE LoginSessions (
-    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    login_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
+    login_attempt_id INT NOT NULL,
     login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ip_address VARCHAR(45) NOT NULL,
-    user_agent VARCHAR(255) NOT NULL,
     session_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (login_attempt_id) REFERENCES LoginAttempts(attempt_id)
 
 );
 
@@ -34,9 +34,11 @@ CREATE TABLE Workouts (
     workout_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     workout_name VARCHAR(100) NOT NULL,
-    date DATE NOT NULL,
+    target VARCHAR(255) NOT NULL,
+    date DATE DEFAULT (CURRENT_DATE), -- Set the default value to the current date
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
+
 
 CREATE TABLE Exercises (
     exercise_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,8 +48,24 @@ CREATE TABLE Exercises (
 CREATE TABLE WorkoutExercises (
     workout_id INT,
     exercise_id INT,
+    sets INT,
+    reps INT,
+    weight FLOAT,
+    duration INT,
+    notes TEXT,
     PRIMARY KEY (workout_id, exercise_id),
     FOREIGN KEY (workout_id) REFERENCES Workouts(workout_id),
     FOREIGN KEY (exercise_id) REFERENCES Exercises(exercise_id)
 );
+
+CREATE TABLE LoginAttempts (
+    attempt_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    is_token_verified BOOLEAN DEFAULT 0,
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip_address VARCHAR(45) NOT NULL,
+    user_agent VARCHAR(255) NOT NULL
+);
+
 
