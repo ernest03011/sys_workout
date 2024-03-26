@@ -1,10 +1,10 @@
     <!-- Header -->
     <header class="container">
-      <hgroup>
+      <!-- <hgroup>
         <h1>Pico</h1>
         <p>A pure HTML example, without dependencies.</p>
-      </hgroup>
-      <nav>
+      </hgroup> -->
+      <!-- <nav>
         <ul>
           <li>
             <details class="dropdown">
@@ -17,6 +17,6 @@
             </details>
           </li>
         </ul>
-      </nav>
+      </nav> -->
     </header>
     <!-- ./ Header -->
