@@ -22,9 +22,9 @@ class JWTHandler
     $this->payload = [
       'iss' => $_ENV['JWT_ISS'],
       'aud'=> $_ENV['JWT_AUD'],
-      "customerId" => $params['customerID'],
+      "customerId" => $params['user_id'],
       "name" => $params['name'],
-      "admin" => $params['admin'],
+      // "admin" => $params['admin'],
       "iat" => $this->issuedAt,
       "exp" => $this->expire,
       
@@ -33,7 +33,6 @@ class JWTHandler
 
   public static function encode(array $params){
     $obj = new self($params);
-    // $payload_arr = $obj->payload;
     return JWT::encode($obj->payload, $_ENV['JWT_KEY'], $_ENV['JWT_ALG']);
   }
 
