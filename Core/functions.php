@@ -25,7 +25,27 @@ function abort($code = 404)
   die();
 }
 
-function view($path)
+function view($path, $attributes = [])
 {
+
+  extract($attributes);
   require base_path("views/{$path}");
 }
+
+function is_get_request(){
+  return strtoupper($_SERVER['REQUEST_METHOD']) == 'GET';
+}
+
+function is_post_request(){
+  return strtoupper($_SERVER['REQUEST_METHOD']) == 'POST';
+}
+
+function generateRandomToken($length = 32) {
+    return bin2hex(random_bytes($length / 2));
+}
+
+function replaceSpacesWithPercent20($string) {
+  return str_replace(' ', '%20', trim($string));
+}
+
+
