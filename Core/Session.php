@@ -4,6 +4,12 @@ namespace Core;
 
 class Session
 {
+   public static function regenerateID() : string
+   {
+      session_regenerate_id(true);
+
+      return session_id();
+   }
 
    public static function has($key){
     return (bool) static::get($key);
