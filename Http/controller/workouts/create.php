@@ -9,9 +9,8 @@ $ch = new CurlController($url, $params);
 $response_arr = $ch->execute();
 $ch->close();
 
-dd($response_arr);
+// dd($response_arr);
 
-dd($response_arr['response']);
+// dd($response_arr['response']);
 
-view("workouts/create.php");
-
+view("workouts/create.view.php");

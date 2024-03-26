@@ -1,5 +1,9 @@
 <?php
 
-// Shows the homepage for the workouts
+use Core\Database;
 
-view("workouts/index.php");
+$db = new Database();
+$workouts = $db->query('select * from workouts')->get(); 
+
+view("workouts/index.view.php", [
+  'workouts' => $workouts]);
