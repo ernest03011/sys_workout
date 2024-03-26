@@ -57,13 +57,22 @@ class Router{
 
   }
 
-  public function previousUrl(){
+  public static function previousUrl(){
     return $_SERVER['HTTP_REFERER'];
   }
 
   public static function redirect($url, $replace = true, $response_code = 302){
     header("location: {$url}", $replace, $response_code);
     exit;
+  }
+
+  public static function redirect_with(string $url, array $items){
+
+    foreach ($items as $key => $value) {
+      Session::flash($key, $value);
+    }
+
+    self::redirect($url, true, 302);
   }
 
 }
