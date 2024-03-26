@@ -6,7 +6,7 @@ use PDO;
 
 class Database{
 
-  private $statement;
+  public $statement;
   public $connection;
   
   public function __construct() {
@@ -20,6 +20,8 @@ class Database{
   public function query($query, $params = []){
     $this->statement = $this->connection->prepare($query);
     $this->statement->execute($params);
+
+    return $this;
   }
 
   public function get(){
@@ -44,6 +46,10 @@ class Database{
 
   public function killConnection(){
     $this->connection = null;
+  }
+
+  public function lastInsertedId(){
+    return $this->connection->lastInsertId();
   }
   
 }
