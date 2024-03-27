@@ -15,8 +15,8 @@ CREATE TABLE UserRolesMap (
     user_id INT,
     role_id INT,
     PRIMARY KEY (user_id, role_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (role_id) REFERENCES UserRoles(role_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (role_id) REFERENCES UserRoles(role_id) ON DELETE CASCADE
 );
 
 CREATE TABLE LoginSessions (
@@ -25,8 +25,8 @@ CREATE TABLE LoginSessions (
     login_attempt_id INT NOT NULL,
     login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     session_id VARCHAR(255) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (login_attempt_id) REFERENCES LoginAttempts(attempt_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (login_attempt_id) REFERENCES LoginAttempts(attempt_id) ON DELETE CASCADE
 
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE Workouts (
     workout_name VARCHAR(100) NOT NULL,
     target VARCHAR(255) NOT NULL,
     date DATE DEFAULT (CURRENT_DATE), -- Set the default value to the current date
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
 
@@ -54,8 +54,8 @@ CREATE TABLE WorkoutExercises (
     duration INT,
     notes TEXT,
     PRIMARY KEY (workout_id, exercise_id),
-    FOREIGN KEY (workout_id) REFERENCES Workouts(workout_id),
-    FOREIGN KEY (exercise_id) REFERENCES Exercises(exercise_id)
+    FOREIGN KEY (workout_id) REFERENCES Workouts(workout_id) ON DELETE CASCADE,
+    FOREIGN KEY (exercise_id) REFERENCES Exercises(exercise_id) ON DELETE CASCADE
 );
 
 CREATE TABLE LoginAttempts (
