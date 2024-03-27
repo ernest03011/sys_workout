@@ -1,5 +1,6 @@
 <?php
 
+use Core\Database;
 use Http\controller\Curl\CurlController;
 
 $url = 'https://exercisedb.p.rapidapi.com/';
@@ -13,4 +14,10 @@ $ch->close();
 
 // dd($response_arr['response']);
 
-view("workouts/create.view.php");
+$data = (new Database)->query('SELECT target FROM exercises WHERE exercise_id > :exercise_id', [
+  'exercise_id' => 0 
+])->get();
+
+view("workouts/create.view.php", [
+  'targets' => $data
+]); 

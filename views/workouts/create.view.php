@@ -58,9 +58,19 @@
         <!-- <input type="text" id="exercise_name" name="exercise_name" required><br> -->
         <select name="exercise_name" id="exercise_name" required>
           <option value="">--- Choose an Exercise name ---</option>
+          
+          <?php foreach($targets as $target) : ?>
+ 
+            <option value="<?php htmlspecialchars($target['target']); ?>">
+              <?php htmlspecialchars($target['target']); ?>
+            </option>
+
+
+          <?php endforeach; ?>
+<!-- 
           <option value="red">Red</option>
           <option value="green">Green</option>
-          <option value="blue">Blue</option>
+          <option value="blue">Blue</option> -->
         </select>
                   
         <label for="sets">Sets:</label>
