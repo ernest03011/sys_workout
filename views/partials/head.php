@@ -8,11 +8,7 @@
     <title>Workout Logger</title>
     <!-- <meta name="description" content="A web for logging workout." /> -->
 
-    <!-- Pico.css -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    />
+    <link rel="stylesheet" href="css/style.css">
     <script type="module" src="js/main.js"></script>
   </head>
 
