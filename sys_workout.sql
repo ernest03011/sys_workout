@@ -34,7 +34,6 @@ CREATE TABLE Workouts (
     workout_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     workout_name VARCHAR(100) NOT NULL,
-    target VARCHAR(255) NOT NULL,
     date DATE DEFAULT (CURRENT_DATE), -- Set the default value to the current date
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
@@ -42,7 +41,8 @@ CREATE TABLE Workouts (
 
 CREATE TABLE Exercises (
     exercise_id INT AUTO_INCREMENT PRIMARY KEY,
-    exercise_name VARCHAR(100) NOT NULL
+    exercise_name VARCHAR(100) NOT NULL,
+    target_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE WorkoutExercises (
