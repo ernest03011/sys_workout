@@ -1,6 +1,8 @@
 <?php view("partials/head.php"); ?>
 <?php view("partials/nav.php"); ?>
 
+<!-- Show PHP messages -->
+
 <?php 
     use Core\Session;
     if(Session::has('added_workout')){
@@ -9,7 +11,7 @@
 
 ?>
 
-<h1>Workout Sessions</h1>
+<!-- <h1>Workout Sessions</h1> -->
 
 <!-- Section A: Displaying registered workout sessions -->
 <section id="registered_sessions">
@@ -28,9 +30,11 @@
 <section id="create_session">
     <h2>Create a New Workout Session</h2>
     <!-- <button id="create_session_btn">Create Workout Session</button> -->
-    <a href="/add">Create Workout Session</a>
+    <a href="/add" class="text-blue">Create Workout Session</a>
 
       
 </section>
 
-<?php view("partials/footer.php"); ?>
+
+
+<?php view('partials/footer.php'); ?>
