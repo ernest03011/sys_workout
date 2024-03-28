@@ -14,7 +14,7 @@ $ch->close();
 
 // dd($response_arr['response']);
 
-$data = (new Database)->query('SELECT target FROM exercises WHERE exercise_id > :exercise_id', [
+$data = (new Database)->query('SELECT target_name FROM exercises WHERE exercise_id > :exercise_id', [
   'exercise_id' => 0 
 ])->get();
 
