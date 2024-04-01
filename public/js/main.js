@@ -1,6 +1,9 @@
 const addExerciseButton = document.getElementById("add_exercise_btn");
 const submitWorkoutButton = document.getElementById("add_submit_workout");
 const myForm = document.getElementById("workout_form");
+const exerciseTableBody = document.getElementById(
+  "exercise-details-table-body"
+);
 
 const exerciseName = document.getElementById("exercise_name");
 const sets = document.getElementById("sets");
@@ -21,6 +24,7 @@ function addExercisesToTheArray() {
     notes: notes.value,
   };
 
+  addValuesToThetable(Object.values(data));
   let jsonData = JSON.stringify(data);
   exercisesArray.push(jsonData); // Push data into exercisesArray
 
@@ -36,7 +40,10 @@ function resetValues() {
   exercisesArray = [];
 }
 
-addExerciseButton.addEventListener("click", addExercisesToTheArray);
+addExerciseButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  addExercisesToTheArray();
+});
 
 submitWorkoutButton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -66,3 +73,19 @@ submitWorkoutButton.addEventListener("click", (event) => {
 document
   .getElementById("start_again_btn")
   .addEventListener("click", resetValues);
+
+function addValuesToThetable(arrValue) {
+  const tr = document.createElement("tr");
+  tr.classList.add("bg-white", "hover:bg-gray-100");
+
+  // Loop through each value in arrValue and create a corresponding table data cell (<td>)
+  arrValue.forEach((value) => {
+    const td = document.createElement("td");
+    td.classList.add("px-4", "py-2", "border", "border-gray-200");
+    td.textContent = value;
+    tr.appendChild(td);
+  });
+
+  // Append the table row to the table body
+  exerciseTableBody.appendChild(tr);
+}
