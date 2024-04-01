@@ -14,7 +14,7 @@ function findExerciseId(string $name, Database $db)
     'exercise_name' => $name
   ])->find();
 
-  return $exercise['exercise_id'];
+  return $exercise ? $exercise['exercise_id'] : false;
 }
 
 $workout_id = $db->query('INSERT INTO workouts (user_id, workout_name) VALUES (:user_id, :workout_name)', [
@@ -31,16 +31,25 @@ foreach ($exercises as $exercise) {
 
   $exercises_array[] = $decodedExercise; 
 
-  $db->query('INSERT INTO workoutexercises (workout_id, exercise_id, sets, reps, weight, duration, notes) VALUES (:workout_id, :exercise_id, :sets, :reps, :weight, :duration, :notes)', [
-    'workout_id' => $workout_id, 
-    'exercise_id' => $exercise_id,
-    'sets' => $decodedExercise['sets'],
-    'reps' => $decodedExercise['reps'],
-    'weight' => $decodedExercise['weight'],
-    'duration' => $decodedExercise['duration'],
-    'notes' => $decodedExercise['notes'],
+  if(! $exercise_id == false && ! empty($decodedExercise) ){
 
-  ]);
+    $db->query('INSERT INTO workoutexercises (workout_id, exercise_id, sets, reps, weight, duration, notes) VALUES (:workout_id, :exercise_id, :sets, :reps, :weight, :duration, :notes)', [
+      'workout_id' => $workout_id, 
+      'exercise_id' => $exercise_id,
+      'sets' => $decodedExercise['sets'],
+      'reps' => $decodedExercise['reps'],
+      'weight' => $decodedExercise['weight'],
+      'duration' => $decodedExercise['duration'],
+      'notes' => $decodedExercise['notes'],
+  
+    ]);
+
+  }else{
+    Router::redirect_with('/add',[
+      'error' => 'Please try to add the workout again, something went wrong!'
+    ]);
+  }
+
 
 }
 
