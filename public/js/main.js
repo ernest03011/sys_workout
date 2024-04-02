@@ -42,7 +42,27 @@ function resetValues() {
 
 addExerciseButton.addEventListener("click", (event) => {
   event.preventDefault();
+
+  const myForm = document.forms["exercise_form"];
+
+  // Iterate over the form's elements collection
+  for (let i = 0; i < myForm.length; i++) {
+    const element = myForm[i];
+
+    // Check if the element is an input field
+    if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+      // Print the value of the input field
+      // console.log(element.name + ": " + element.value);
+      const result = validateInputField(element.value);
+      if (result === false) {
+        didplayErrorMessage();
+        return;
+      }
+    }
+  }
+
   addExercisesToTheArray();
+  removeErrorMessage();
 });
 
 submitWorkoutButton.addEventListener("click", (event) => {
@@ -88,4 +108,45 @@ function addValuesToThetable(arrValue) {
 
   // Append the table row to the table body
   exerciseTableBody.appendChild(tr);
+}
+
+function validateInputField(value) {
+  return value.trim() != "";
+}
+
+function didplayErrorMessage() {
+  const parentElement = document.getElementById("create-workout-page");
+  const firstChild = parentElement.firstElementChild;
+  // console.log(firstChild);
+  const elemntID = firstChild.getAttribute("id");
+
+  if (elemntID === "error-msg") {
+    return;
+  }
+
+  const p = document.createElement("p");
+  p.classList.add(
+    "my-4",
+    "rounded-md",
+    "py-2",
+    "px-4",
+    "text-white",
+    "bg-green-500"
+  );
+  p.setAttribute("id", "error-msg");
+
+  p.textContent = "There was an error when submitting the Workout, try again";
+
+  // document.getElementById("create-workout-page").appendChild(p);
+  parentElement.insertBefore(p, firstChild);
+}
+
+function removeErrorMessage() {
+  const parentElement = document.getElementById("create-workout-page");
+  const firstChild = parentElement.firstElementChild;
+  const elemntID = firstChild.getAttribute("id");
+
+  if (elemntID === "error-msg") {
+    parentElement.removeChild(firstChild);
+  }
 }

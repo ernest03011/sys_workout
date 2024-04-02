@@ -2,7 +2,7 @@
 <?php view("partials/nav.php"); ?>
 
 
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4" id="create-workout-page">
 
 <!-- Show PHP messages -->
 
@@ -49,11 +49,11 @@
                 <label for="reps" class="block font-bold mb-1">Reps:</label>
                 <input type="number" name="reps" id="reps" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
                 <label for="weight" class="block font-bold mb-1">Weight (lbs):</label>
-                <input type="number" name="weight" id="weight" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+                <input type="number" name="weight" id="weight" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
                 <label for="duration" class="block font-bold mb-1">Duration (mins):</label>
-                <input type="number" name="duration" id="duration" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+                <input type="number" name="duration" id="duration" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
                 <label for="notes" class="block font-bold mb-1">Notes:</label>
-                <textarea name="notes" id="notes" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"></textarea>
+                <textarea name="notes" id="notes" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"></textarea>
             </div>
         </div>
 

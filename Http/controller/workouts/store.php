@@ -2,11 +2,28 @@
 
 use Core\Router;
 use Core\Database;
+use Core\Validator;
 
 $workout_name = $_POST['workout_name'];
 $exercises = $_POST['exercises'];
 
 $db = new Database;
+
+if(! Validator::string($workout_name, 1, 255)){
+  Router::redirect_with('/add',[
+    'error' => 'Please try to add the workout again, something went wrong!'
+  ]);
+}
+
+foreach ($exercises as $exercise) {
+  foreach ($exercise as $key => $value) {
+    if(! Validator::string($value, 1, 255)){
+      Router::redirect_with('/add',[
+        'error' => 'Please try to add the workout again, something went wrong!'
+      ]);
+    }
+  }
+}
 
 function findExerciseId(string $name, Database $db)
 {
