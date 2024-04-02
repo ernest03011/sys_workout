@@ -9,7 +9,7 @@ class Authenticated{
   public function handle(){
     if(! Session::has('user') ?? false){
 
-      header('location: /');
+      header('location: /login');
       exit();
     }
   }
