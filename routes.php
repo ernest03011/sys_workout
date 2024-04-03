@@ -18,4 +18,6 @@ $router->post('/auth-token', "sessions/auth.token.php")->only('guest');
 $router->get("/workouts", "workouts/index.php")->only('auth');
 $router->get("/workout", "workouts/show.php")->only('auth');
 
+$router->get("/exercises", "exercises/show.php")->only('auth');
+
 
