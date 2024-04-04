@@ -1,5 +1,4 @@
 <?php view('partials/head.php'); ?>
-<?php view('partials/nav.php'); ?>
 
 <?php
     use Core\Session;
