@@ -35,15 +35,15 @@
             <div class="exercise mb-4 border border-gray-300 p-4 rounded-md">
                 <h3 class="text-lg font-bold mb-2">Exercise 1</h3>
                 <label for="exercise_name" class="block font-bold mb-1">Exercise Name:</label>
-                <input type="text" name="exercise_name" id="exercise_name" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
-                <!-- <select name="exercise_name[]" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+                <!-- <input type="text" name="exercise_name" id="exercise_name" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"> -->
+                <select name="exercise_name" id="exercise_name" required class="focus:outline-none focus:border-blue-500">
                     <option value="">--- Choose an Exercise name ---</option>
-                    <?php foreach($targets as $target) : ?>
-                        <option value="<?= htmlspecialchars($target['target']); ?>">
-                            <?= htmlspecialchars($target['target']); ?>
+                    <?php foreach($exerciseNameList as $exerciseName) : ?>
+                        <option value="<?= htmlspecialchars($exerciseName["exercise_name"]); ?>">
+                            <?= htmlspecialchars($exerciseName["exercise_name"]); ?>
                         </option>
                     <?php endforeach; ?>
-                </select> -->
+                </select>
                 <label for="sets" class="block font-bold mb-1">Sets:</label>
                 <input type="number" name="sets" id="sets" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
                 <label for="reps" class="block font-bold mb-1">Reps:</label>
