@@ -15,9 +15,15 @@
 
 ?>
 
-<!-- <h1>Workout Sessions</h1> -->
 
-<!-- Section A: Displaying registered workout sessions -->
+<!-- Section A: Button to create a new workout session -->
+<section id="create_session" class="pl-8 pb-6">
+    <h2 class="text-xl font-bold mb-4">Create a New Workout Session</h2>
+    <a href="/add" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">Create Workout Session</a>
+</section>
+
+
+<!-- Section B: Displaying registered workout sessions -->
 <section id="registered_sessions" class="p-4">
     <h2 class="text-2xl font-bold mb-4">Registered Workout Sessions</h2>
     <ul>
@@ -31,16 +37,6 @@
         <!-- Add more entries as needed -->
     </ul>
 </section>
-
-
-<!-- Section B: Button to create a new workout session -->
-<section id="create_session" class="p-4">
-    <h2 class="text-2xl font-bold mb-4">Create a New Workout Session</h2>
-    <!-- <button id="create_session_btn">Create Workout Session</button> -->
-    <a href="/add" class="text-blue-500 hover:text-blue-700">Create Workout Session</a>
-</section>
-
-
 
 
 <?php view('partials/footer.php'); ?>
