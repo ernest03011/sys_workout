@@ -43,5 +43,10 @@ class CurlController{
   {
     curl_close($this->curl);
   }
+
+  public function getErrors(){
+    return curl_error($this->curl);
+  }
+  
 }
 
