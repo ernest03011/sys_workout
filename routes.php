@@ -3,8 +3,6 @@
 $router->get('/test', "test.php");
 $router->get('/', "workouts/dashboard.php")->only('auth');
 
-// $router->get('/dashboard', "workouts/index.php")->only('auth');
-
 $router->get('/add', "workouts/create.php")->only('auth');
 $router->post('/add', "workouts/store.php")->only('auth');
 
