@@ -12,7 +12,9 @@ const weight = document.getElementById("weight");
 const duration = document.getElementById("duration");
 const notes = document.getElementById("notes");
 
-const exercisesArray = [];
+const workoutName = document.getElementById("workout_name");
+
+let exercisesArray = [];
 
 function addExercisesToTheArray() {
   let data = {
@@ -27,7 +29,10 @@ function addExercisesToTheArray() {
   addValuesToThetable(Object.values(data));
   let jsonData = JSON.stringify(data);
   exercisesArray.push(jsonData); // Push data into exercisesArray
+  resetExerciseFormInputFields();
+}
 
+function resetExerciseFormInputFields() {
   exerciseName.value = "";
   sets.value = "";
   reps.value = "";
@@ -38,6 +43,8 @@ function addExercisesToTheArray() {
 
 function resetValues() {
   exercisesArray = [];
+  resetExerciseFormInputFields();
+  workoutName.value = "";
 }
 
 addExerciseButton.addEventListener("click", (event) => {
@@ -83,7 +90,6 @@ submitWorkoutButton.addEventListener("click", (event) => {
       // Append the input element to the form
       myForm.appendChild(input);
     });
-    console.log("Testing");
     myForm.submit();
 
     resetValues();
@@ -117,7 +123,7 @@ function validateInputField(value) {
 function didplayErrorMessage() {
   const parentElement = document.getElementById("create-workout-page");
   const firstChild = parentElement.firstElementChild;
-  // console.log(firstChild);
+
   const elemntID = firstChild.getAttribute("id");
 
   if (elemntID === "error-msg") {
@@ -150,3 +156,25 @@ function removeErrorMessage() {
     parentElement.removeChild(firstChild);
   }
 }
+
+function toggleNotesDetails() {
+  const noteDetailSection = document.getElementById("workout-detail-section");
+
+  const sectionStatus = noteDetailSection.dataset.toggleStatus;
+
+  if (sectionStatus == "hidden") {
+    noteDetailSection.classList.remove("hidden", "opacity-0", "translate-y-1");
+    noteDetailSection.classList.add("flex", "opacity-100", "translate-y-0");
+
+    noteDetailSection.dataset.toggleStatus = "visible";
+  } else if (sectionStatus == "visible") {
+    noteDetailSection.classList.remove("flex", "opacity-100", "translate-y-0");
+    noteDetailSection.classList.add("hidden", "opacity-0", "translate-y-1");
+
+    noteDetailSection.dataset.toggleStatus = "hidden";
+  }
+}
+
+document
+  .getElementById("workout-detail-section-btn")
+  .addEventListener("click", toggleNotesDetails);
