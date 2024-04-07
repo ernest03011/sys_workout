@@ -21,6 +21,40 @@
 
     <h2 class="text-2xl font-bold mb-4">Add Workout Details</h2>
 
+    <!-- More details section -->
+    <div class="relative">
+        <button id="workout-detail-section-btn" type="button" class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:bg-indigo-500 rounded-md border-4 " aria-expanded="false">
+            <span>See more details</span>
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <div data-toggle-status="hidden" id="workout-detail-section" class="absolute left-1/2 z-10 mt-5  w-screen max-w-max -translate-x-1/2 px-4 hidden opacity-0 translate-y-1">
+            <div class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+                <!-- Section A -->
+                <div class="p-4">
+                    <h5>Thing to add when adding the notes</h5>
+                    <ul>
+                        <li>Did you increase the weight from last session?</li>
+                        <li>Were you able to achieve more reps with the same weight?</li>
+                        <li>Were you able to achieve more reps with the same weight?</li>
+                        <li>Did you manage to reduce rest time between sets?</li>
+                        <li>Did you notice any improvements in form during this exercise?</li>
+                        <li>How fatigued did you feel during the last set?</li>
+                        <li>Did you focus on achieving better range of motion?</li>
+                        <li>Did you try using a new grip/stance for better engagement?</li>
+                        <li>Did you experiment with tempo variations?</li>
+                        <li>Did you notice any muscle imbalances during the exercise?</li>
+                        <li>Did you incorporate drop sets/supersets for added intensity?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
     <!-- Main form for workout name -->
     <form action="/add" method="POST" id="workout_form" class="mb-8">
         <div class="mb-4">
