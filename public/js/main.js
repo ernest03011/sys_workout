@@ -16,6 +16,16 @@ const workoutName = document.getElementById("workout_name");
 
 let exercisesArray = [];
 
+const mobileMenuButton = document.querySelector(
+  '[aria-controls="mobile-menu"]'
+);
+
+const startAgainBtn = document.getElementById("start_again_btn");
+
+const workoutDetailSectionBtn = document.getElementById(
+  "workout-detail-section-btn"
+);
+
 function addExercisesToTheArray() {
   let data = {
     exerciseName: exerciseName.value,
@@ -47,58 +57,62 @@ function resetValues() {
   workoutName.value = "";
 }
 
-addExerciseButton.addEventListener("click", (event) => {
-  event.preventDefault();
+if (addExerciseButton) {
+  addExerciseButton.addEventListener("click", (event) => {
+    event.preventDefault();
 
-  const myForm = document.forms["exercise_form"];
+    const myForm = document.forms["exercise_form"];
 
-  // Iterate over the form's elements collection
-  for (let i = 0; i < myForm.length; i++) {
-    const element = myForm[i];
+    // Iterate over the form's elements collection
+    for (let i = 0; i < myForm.length; i++) {
+      const element = myForm[i];
 
-    // Check if the element is an input field
-    if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
-      // Print the value of the input field
-      // console.log(element.name + ": " + element.value);
-      const result = validateInputField(element.value);
-      if (result === false) {
-        didplayErrorMessage();
-        return;
+      // Check if the element is an input field
+      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+        // Print the value of the input field
+        // console.log(element.name + ": " + element.value);
+        const result = validateInputField(element.value);
+        if (result === false) {
+          didplayErrorMessage();
+          return;
+        }
       }
     }
-  }
 
-  addExercisesToTheArray();
-  removeErrorMessage();
-});
+    addExercisesToTheArray();
+    removeErrorMessage();
+  });
+}
 
-submitWorkoutButton.addEventListener("click", (event) => {
-  event.preventDefault();
+if (submitWorkoutButton) {
+  submitWorkoutButton.addEventListener("click", (event) => {
+    event.preventDefault();
 
-  addExercisesToTheArray();
+    addExercisesToTheArray();
 
-  if (exercisesArray.length === 0) {
-    alert("Please add any exercise to the workout!");
-  } else {
-    exercisesArray.forEach(function (exercise) {
-      // Create a new hidden input element
-      var input = document.createElement("input");
-      input.type = "hidden";
-      input.name = "exercises[]"; // Use the same name for each input to create an array
-      input.value = exercise;
+    if (exercisesArray.length === 0) {
+      alert("Please add any exercise to the workout!");
+    } else {
+      exercisesArray.forEach(function (exercise) {
+        // Create a new hidden input element
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "exercises[]"; // Use the same name for each input to create an array
+        input.value = exercise;
 
-      // Append the input element to the form
-      myForm.appendChild(input);
-    });
-    myForm.submit();
+        // Append the input element to the form
+        myForm.appendChild(input);
+      });
+      myForm.submit();
 
-    resetValues();
-  }
-});
+      resetValues();
+    }
+  });
+}
 
-document
-  .getElementById("start_again_btn")
-  .addEventListener("click", resetValues);
+if (startAgainBtn) {
+  startAgainBtn.addEventListener("click", resetValues);
+}
 
 function addValuesToThetable(arrValue) {
   const tr = document.createElement("tr");
@@ -175,6 +189,27 @@ function toggleNotesDetails() {
   }
 }
 
-document
-  .getElementById("workout-detail-section-btn")
-  .addEventListener("click", toggleNotesDetails);
+if (workoutDetailSectionBtn) {
+  workoutDetailSectionBtn.addEventListener("click", toggleNotesDetails);
+}
+
+function toggleMobileMenu() {
+  const isExpanded = mobileMenuButton.ariaExpanded;
+  // console.log(mobileMenuButton.ariaExpanded);
+
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (isExpanded == "false") {
+    mobileMenu.classList.remove("md:hidden");
+    mobileMenu.classList.add("hidden");
+  } else if (isExpanded == "true") {
+    mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.add("md:hidden");
+  }
+
+  mobileMenuButton.ariaExpanded = isExpanded == "true" ? "false" : "true";
+}
+
+if (mobileMenuButton) {
+  mobileMenuButton.addEventListener("click", toggleMobileMenu);
+}
