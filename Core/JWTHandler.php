@@ -13,11 +13,11 @@ class JWTHandler
   private $payload;
 
 
-  public function __construct(array $params) {
+  public function __construct(array $params, $exp) {
     date_default_timezone_set($_ENV['TIME_ZONE']);
 
     $this->issuedAt = time();
-    $this->expire = $this->issuedAt + 10800;
+    $this->expire = $this->issuedAt + $exp;
 
     $this->payload = [
       'iss' => $_ENV['JWT_ISS'],
@@ -31,8 +31,8 @@ class JWTHandler
     ];
   }
 
-  public static function encode(array $params){
-    $obj = new self($params);
+  public static function encode(array $params, $exp = 10800){
+    $obj = new self($params, $exp);
     return JWT::encode($obj->payload, $_ENV['JWT_KEY'], $_ENV['JWT_ALG']);
   }
 
