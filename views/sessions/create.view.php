@@ -21,7 +21,16 @@
             </div>
         ";
     }
+
+    if(Session::has('token')){
+        echo "
+            <div class='bg-green-500 text-white px-4 py-2 rounded-md mb-4'>
+                <p>" . Session::get('token') . "</p>
+            </div>
+        ";
+    }
 ?>
+
 
 <form action="/login" method="POST" class="w-full max-w-sm mx-auto mt-8">
     <h1 class="text-2xl font-bold mb-4">Login</h1>
