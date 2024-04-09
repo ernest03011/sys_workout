@@ -19,7 +19,12 @@ class Authenticator
       $isPasswordVerified = true;
 
       if($isPasswordVerified){
-        $resp = self::sendToken();
+        $data = [
+          'username' => $user['username'],
+          'user_id' => $user['user_id']
+        ];
+
+        $resp = self::sendToken($data);
 
         if($resp['success']){
           self::logAttempt($user['user_id'], $resp['token']);
@@ -80,11 +85,18 @@ class Authenticator
     Session::destroy();
   }
 
-  public static function sendToken() : array
+  public static function sendToken($data) : array
   {
 
     $success = false;
-    $token = generateRandomToken();
+    // $token = generateRandomToken();
+    $payload = [
+      'name' => $data['username'],
+      'user_id' => $data['user_id']
+    ];
+
+    $token = JWTHandler::encode($payload, 900);
+
     $result = EmailToken::handler('Jhon Doe', $token);
 
     if(! $result){
@@ -103,6 +115,12 @@ class Authenticator
   public static function validateAttemptToken(string $username, string $token) : array
   {    
     $db = new Database;
+
+    if($token){
+
+      JWTHandler::decode($token);
+      
+    }
  
     $user = $db->query("SELECT u.user_id, la.attempt_id, la.is_token_verified FROM users u JOIN LoginAttempts la ON u.user_id = la.user_id WHERE u.username = :username AND la.token = :token
     ", [
@@ -110,15 +128,15 @@ class Authenticator
       ':token' => $token
     ])->find(); 
 
-    if(! $user && $user['is_token_verified'] == 0){
-      return [
-        'user_id' => false,
-        'attempt_id' => false
-      ];
-    }else{
+    if($user && isset($user['is_token_verified']) && $user['is_token_verified'] == 0){
       return [
         'user_id' => $user['user_id'],
         'attempt_id' => $user['attempt_id']
+      ];
+    }else{
+      return [
+        'user_id' => false,
+        'attempt_id' => false
       ];
     }
 
