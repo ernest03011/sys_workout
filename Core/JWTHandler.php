@@ -47,11 +47,7 @@ class JWTHandler
 
     } catch (\Exception $e) {
 
-      Session::flush();
-
-      Session::destroy();
-
-      Response::handler("UNAUTHORIZED");
+      return false;
     }
   }
   
