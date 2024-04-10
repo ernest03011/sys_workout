@@ -118,7 +118,15 @@ class Authenticator
 
     if($token){
 
-      JWTHandler::decode($token);
+      $decodedToken = JWTHandler::decode($token);
+
+      if(! $decodedToken){
+        $url = Router::previousUrl();
+        $error = [
+          'token' => 'Unable to validate token, double-check it or try to log in again'
+        ];
+        Router::redirect_with($url, $error);
+      }
       
     }
  
