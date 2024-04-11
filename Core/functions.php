@@ -48,4 +48,6 @@ function replaceSpacesWithPercent20($string) {
   return str_replace(' ', '%20', trim($string));
 }
 
-
+function getCurrentURI(){
+  return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+}
