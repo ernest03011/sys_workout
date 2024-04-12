@@ -2,14 +2,14 @@
 
 namespace Core\Middleware;
 
+use Core\Response;
 use Core\Session;
 
 class Authenticated{
 
   public function handle(){
     if(! Session::has('user') ?? false){
-
-      header('location: /login');
+      Response::handler("FORBIDDEN");
       exit();
     }
   }
