@@ -1,13 +1,6 @@
 <?php view("partials/head.php"); ?>
 <?php view("partials/nav.php"); ?>
 
-<div class="container">
-  <h1>403 - Forbidden</h1>
-  <p>Sorry, you don't have permission to access this resource.</p>
-  <p>Return to <a href="/">homepage</a>.</p>
-</div>
-
-
 <div class="text-center">
     <p class="text-base font-semibold text-indigo-600">403</p>
     <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Forbidden</h1>
