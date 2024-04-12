@@ -59,7 +59,7 @@ class Authenticator
       // 'admin' => false
     ];
 
-    $token = JWTHandler::encode($payload);
+    $token = JWTHandler::encode($payload, 10800);
     Session::put('user', [
       'name' => $data['username'],
       'token' => $token]
