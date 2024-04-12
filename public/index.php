@@ -1,6 +1,9 @@
 <?php
 
+use Core\Router;
 use Core\Session;
+use Core\Response;
+use Core\JWTHandler;
 
 const BASE_PATH = __DIR__ ."/../";
 
@@ -21,7 +24,30 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 try {
 
-  $router->route($uri, $method);
+  if(Session::has('user')){
+    $user = Session::get('user');
+
+    $decodedToken = JWTHandler::decode($user['token']);
+    // dd($decodedToken);
+    if(! $decodedToken){
+      Session::flush();
+      Session::destroy();
+      Response::handler("UNAUTHORIZED");
+    }
+    
+    $router->route($uri, $method);
+
+  }else if((getCurrentURI() == '/auth-token') || (getCurrentURI() == '/login')){
+
+    $router->route($uri, $method);
+  }else{
+    Session::flush();
+    Session::destroy();
+    Response::handler("UNAUTHORIZED");
+  }
+
+
+
 
 } catch (ValidationException $exception) {
 
