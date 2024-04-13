@@ -1,5 +1,4 @@
 <?php view("partials/head.php"); ?>
-<?php view("partials/nav.php"); ?>
 
     <div class="text-center">
         <p class="text-base font-semibold text-indigo-600">401</p>
@@ -11,4 +10,3 @@
     </div>
 
 <?php view("partials/footer.php"); ?>
-    c
