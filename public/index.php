@@ -33,17 +33,20 @@ try {
       Session::flush();
       Session::destroy();
       Response::handler("UNAUTHORIZED");
+      exit;
     }
     
     $router->route($uri, $method);
 
-  }else if((getCurrentURI() == '/auth-token') || (getCurrentURI() == '/login')){
+  }else if(in_array(getCurrentURI(), ['/auth-token', '/login'])){
+    // (getCurrentURI() == '/auth-token') || (getCurrentURI() == '/login')
 
     $router->route($uri, $method);
   }else{
     Session::flush();
     Session::destroy();
     Response::handler("UNAUTHORIZED");
+    exit;
   }
 
 
