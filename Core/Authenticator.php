@@ -42,7 +42,7 @@ class Authenticator
 
     $result = [
       'isAValidUser' => $isAValidUser,
-      'token' => $resp['token']
+      'token' => $resp['token'] ?? ""
     ];
 
     return $result;
