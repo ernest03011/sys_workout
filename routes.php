@@ -9,7 +9,7 @@ $router->post('/add', "workouts/store.php")->only('auth');
 $router->get('/login', "sessions/create.php")->only('guest');
 $router->post('/login', "sessions/store.php")->only('guest');
 
-$router->get('/logout', "sessions/destroy.php")->only('auth');
+$router->delete('/logout', "sessions/destroy.php")->only('auth');
 
 $router->post('/auth-token', "sessions/auth.token.php")->only('guest');
 

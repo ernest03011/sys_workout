@@ -13,7 +13,12 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/" class="<?= getCurrentURI() == '/' ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white'?>  text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
               <a href="/workouts" class="<?= getCurrentURI() == '/workouts' ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white'?> text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Workouts</a>
-              <a href="/logout" class=" <?= getCurrentURI() == '/logout' ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white'?> text-gray-300 block rounded-md px-3 py-2 text-base font-mediu">Logout</a>
+
+              <form action="/logout" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+
+                <button class=" <?= getCurrentURI() == '/logout' ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white'?> text-gray-300 block rounded-md px-3 py-2 text-base font-mediu">Logout</button>
+              </form>
 
             </div>
 
