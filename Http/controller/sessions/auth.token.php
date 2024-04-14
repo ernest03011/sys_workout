@@ -22,10 +22,13 @@ use Core\Authenticator;
       Router::redirect_with($url, $error);
     }
 
+    $isItAdmin = Authenticator::isItAdmin($username);
+
     $data = [
       'user_id' => $resp['user_id'],
       'attempt_id' => $resp['attempt_id'],
-      'username' => $username
+      'username' => $username,
+      'admin' => $isItAdmin
     ];
 
     Authenticator::login($data);
