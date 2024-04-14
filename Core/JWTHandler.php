@@ -24,7 +24,7 @@ class JWTHandler
       'aud'=> $_ENV['JWT_AUD'],
       "customerId" => $params['user_id'],
       "name" => $params['name'],
-      // "admin" => $params['admin'],
+      "admin" => $params['admin'] ?? "",
       "iat" => $this->issuedAt,
       "exp" => $this->expire,
       
