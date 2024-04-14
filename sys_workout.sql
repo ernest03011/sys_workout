@@ -61,7 +61,7 @@ CREATE TABLE WorkoutExercises (
 CREATE TABLE LoginAttempts (
     attempt_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    token VARCHAR(255) NOT NULL,
+    token VARCHAR(512) NOT NULL,
     is_token_verified BOOLEAN DEFAULT 0,
     login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     ip_address VARCHAR(45) NOT NULL,
