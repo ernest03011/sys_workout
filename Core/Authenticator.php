@@ -55,8 +55,8 @@ class Authenticator
 
     $payload = [
       'name' => $data['username'],
-      'user_id' => $data['user_id']
-      // 'admin' => false
+      'user_id' => $data['user_id'],
+      'admin' => $data['admin']
     ];
 
     $token = JWTHandler::encode($payload, 10800);
@@ -170,6 +170,22 @@ class Authenticator
     'login_attempt_id' => $data['login_attempt_id'],
     'session_id' => $data['session_id']
    ]);
+
+  }
+
+  public static function isItAdmin($username) : bool
+  {
+    $db = new Database;
+
+    $result = $db->query('SELECT role.role_name FROM UserRolesMap map JOIN users u ON u.user_id = map.user_id JOIN UserRoles role ON map.role_id = role.role_id WHERE u.username = :username ', [
+      'username' => $username
+    ])->get();
+
+    if(isset($result[0])){
+      return $result[0]['role_name'] == 'admin' ? true : false;
+    }else{
+      return false;
+    }
 
   }
 
