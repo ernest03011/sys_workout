@@ -40,7 +40,7 @@
                     
                     <tr>
                         <td class="px-4 py-2 border border-gray-200"> <a class="font-semibold text-indigo-600" href="exercises?name=<?= htmlspecialchars($workout['exercise_name']); ?>"><?= htmlspecialchars($workout['exercise_name']); ?></a></td>
-                        <td class="px-4 py-2 border border-gray-200"><?= htmlspecialchars($workout['target']); ?></td>
+                        <td class="px-4 py-2 border border-gray-200"><?= htmlspecialchars($workout['target_name']); ?></td>
                         <td class="px-4 py-2 border border-gray-200"><?= htmlspecialchars($workout['sets']); ?></td>
                         <td class="px-4 py-2 border border-gray-200"><?= htmlspecialchars($workout['reps']); ?></td>
                         <td class="px-4 py-2 border border-gray-200"><?= htmlspecialchars($workout['weight']); ?></td>
