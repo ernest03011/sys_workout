@@ -67,7 +67,7 @@
     <form id="exercise_form" class="mb-8">
         <div id="exercise_fields" class="mb-4">
             <div class="exercise mb-4 border border-gray-300 p-4 rounded-md">
-                <h3 class="text-lg font-bold mb-2">Exercise 1</h3>
+                <h3 class="text-lg font-bold mb-2">Exercise</h3>
                 <label for="exercise_name" class="block font-bold mb-1">Exercise Name:</label>
                 <!-- <input type="text" name="exercise_name" id="exercise_name" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"> -->
                 <select name="exercise_name" id="exercise_name" required class="focus:outline-none focus:border-blue-500">
@@ -79,13 +79,27 @@
                     <?php endforeach; ?>
                 </select>
                 <label for="sets" class="block font-bold mb-1">Sets:</label>
-                <input type="number" name="sets" id="sets" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
-                <label for="reps" class="block font-bold mb-1">Reps:</label>
-                <input type="number" name="reps" id="reps" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
-                <label for="weight" class="block font-bold mb-1">Weight (lbs):</label>
-                <input type="number" name="weight" id="weight" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
-                <label for="duration" class="block font-bold mb-1">Duration (mins):</label>
-                <input type="number" name="duration" id="duration" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+                <!-- <input type="number" name="sets" id="sets" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"> -->
+                <select name="sets" id="sets" required class="focus:outline-none focus:border-blue-500">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                
+                <div id="strength" class="my-4">
+                    <div class="sets">
+                        <label for="reps" class="">Reps:</label>
+                        <input type="number" name="reps" id="reps" required class="focus:outline-none focus:border-blue-500">
+                        <label for="weight" class="">Weight (lbs):</label>
+                        <input type="number" name="weight" id="weight" required class="focus:outline-none focus:border-blue-500">
+                    </div>
+                </div>
+                <div id="cardio" class="mby-4">
+                    <label for="duration" class="block font-bold mb-1">Duration (mins):</label>
+                    <input type="number" name="duration" id="duration" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+                </div>
                 <label for="notes" class="block font-bold mb-1">Notes:</label>
                 <textarea name="notes" id="notes" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"></textarea>
             </div>
