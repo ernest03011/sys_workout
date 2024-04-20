@@ -27,18 +27,42 @@ const workoutDetailSectionBtn = document.getElementById(
 );
 
 function addExercisesToTheArray() {
-  let data = {
-    exerciseName: exerciseName.value,
-    sets: sets.value,
-    reps: reps.value,
-    weight: weight.value,
-    duration: duration.value,
-    notes: notes.value,
-  };
+  let data = [];
+
+  if (exerciseName.value == "Cardio") {
+    data = {
+      exerciseName: exerciseName.value,
+      sets: sets.value,
+      reps: "0",
+      weight: "0",
+      duration: duration.value,
+      notes: notes.value,
+    };
+  } else {
+    const reps = document.querySelectorAll('[name="reps"]');
+    const weight = document.querySelectorAll('[name="weight"]');
+    console.log(reps);
+
+    let repsValues = Array.from(reps).map((rep) => {
+      return rep.value;
+    });
+    let weightValues = Array.from(weight).map((wght) => {
+      return wght.value;
+    });
+
+    data = {
+      exerciseName: exerciseName.value,
+      sets: sets.value,
+      reps: repsValues.join(", "),
+      weight: weightValues.join(", "),
+      duration: "0",
+      notes: notes.value,
+    };
+  }
 
   addValuesToThetable(Object.values(data));
   let jsonData = JSON.stringify(data);
-  exercisesArray.push(jsonData); // Push data into exercisesArray
+  exercisesArray.push(jsonData);
   resetExerciseFormInputFields();
 }
 
@@ -66,11 +90,18 @@ if (addExerciseButton) {
     // Iterate over the form's elements collection
     for (let i = 0; i < myForm.length; i++) {
       const element = myForm[i];
+      const isItCardio = exerciseName.value == "Cardio" ? true : false;
 
-      // Check if the element is an input field
       if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
-        // Print the value of the input field
-        // console.log(element.name + ": " + element.value);
+        if (
+          isItCardio &&
+          (element.name == "reps" || element.name == "weight")
+        ) {
+          continue;
+        } else if (!isItCardio && element.name == "duration") {
+          continue;
+        }
+
         const result = validateInputField(element.value);
         if (result === false) {
           didplayErrorMessage();
@@ -230,4 +261,84 @@ function toggleMobileMenu() {
 
 if (mobileMenuButton) {
   mobileMenuButton.addEventListener("click", toggleMobileMenu);
+}
+
+function handleWeightRepsInputs() {
+  const container = document.getElementById("strength");
+  const setsValue = Number(sets.value);
+  container.innerHTML = "";
+
+  // Clear existing content inside the container
+  // This step is optional depending on your use case
+  // container.innerHTML = "";
+
+  // Create a document fragment to hold the new input fields
+  const fragment = document.createDocumentFragment();
+
+  // Create input fields for each set
+  for (let index = 0; index < setsValue; index++) {
+    const div = document.createElement("div");
+    div.classList.add("sets");
+
+    const repsLabel = document.createElement("label");
+    repsLabel.htmlFor = "reps" + index;
+    repsLabel.textContent = "Reps:";
+    div.appendChild(repsLabel);
+
+    const repsInput = document.createElement("input");
+    repsInput.type = "number";
+    repsInput.name = "reps";
+    repsInput.id = "reps" + index;
+    repsInput.required = true;
+    repsInput.classList.add("focus:outline-none", "focus:border-blue-500");
+    div.appendChild(repsInput);
+
+    const weightLabel = document.createElement("label");
+    weightLabel.htmlFor = "weight" + index;
+    weightLabel.textContent = "Weight (lbs):";
+    div.appendChild(weightLabel);
+
+    const weightInput = document.createElement("input");
+    weightInput.type = "number";
+    weightInput.name = "weight";
+    weightInput.id = "weight" + index;
+    weightInput.required = true;
+    weightInput.classList.add("focus:outline-none", "focus:border-blue-500");
+    div.appendChild(weightInput);
+    div.classList.add("mb-2");
+
+    fragment.appendChild(div);
+  }
+
+  // Append the fragment with the new input fields to the container
+  container.appendChild(fragment);
+}
+
+if (sets) {
+  sets.addEventListener("change", handleWeightRepsInputs);
+}
+
+function handleDurationInputVisibility() {
+  const cardioSection = document.getElementById("cardio");
+  const strengthSection = document.getElementById("strength");
+
+  const isItCardio = exerciseName.value == "Cardio" ? true : false;
+
+  if (isItCardio) {
+    cardioSection.classList.add("block");
+    cardioSection.classList.remove("hidden");
+
+    strengthSection.classList.add("hidden");
+    strengthSection.classList.remove("block");
+  } else {
+    cardioSection.classList.remove("block");
+    cardioSection.classList.add("hidden");
+
+    strengthSection.classList.remove("hidden");
+    strengthSection.classList.add("block");
+  }
+}
+
+if (exerciseName) {
+  exerciseName.addEventListener("change", handleDurationInputVisibility);
 }
