@@ -18,4 +18,8 @@ $router->get("/workout", "workouts/show.php")->only('auth');
 
 $router->get("/exercises", "exercises/show.php")->only('auth');
 
+$router->get("/stats", "stats/index.php")->only('auth');
+$router->get("/stats/exercise", "stats/show.php")->only('auth');
+
+
 
