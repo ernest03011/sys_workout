@@ -8,8 +8,8 @@
     <title>Workout Logger</title>
     <!-- <meta name="description" content="A web for logging workout." /> -->
 
-    <link rel="stylesheet" href="css/style.css">
-    <script type="module" src="js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/main.js"></script>
   </head>
 
   <body class="h-full">
