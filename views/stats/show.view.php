@@ -1,7 +1,7 @@
 <?php view('partials/head.php'); ?>
 <?php view('partials/nav.php'); ?>
 
-<div class="container mx-auto py-8">
+<div class="container mx-auto py-8 mt-8">
     <h1 class="text-3xl font-bold text-center mb-8">Workout Comparison for <?= $data[0]["exercise_name"]; ?></h1>
     
     <!-- Weight Comparison Chart -->

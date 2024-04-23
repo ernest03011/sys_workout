@@ -13,7 +13,7 @@
 
 ?>
 
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 mt-8">
 
     <h2 class="text-2xl font-bold mb-4">Workout Session: <?= htmlspecialchars($workouts[0]['workout_name']); ?></h2>
     <h3>Date: <?= htmlspecialchars($workouts[0]['date']); ?></h3>

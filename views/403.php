@@ -1,7 +1,7 @@
 <?php view("partials/head.php"); ?>
 <?php view("partials/nav.php"); ?>
 
-<div class="text-center">
+<div class="text-center mt-14">
     <p class="text-base font-semibold text-indigo-600">403</p>
     <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Forbidden</h1>
     <p class="mt-6 text-base leading-7 text-gray-600">Sorry, you don't have permission to access this resource.</p>

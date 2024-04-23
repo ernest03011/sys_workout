@@ -2,9 +2,9 @@
 <?php view("partials/nav.php"); ?>
 
 
-<div class="container mx-auto px-4" id="create-workout-page">
+<div class="container mx-auto px-4 mt-8" id="create-workout-page">
 
-<!-- Show PHP messages -->
+    <!-- Show PHP messages -->
 
     <?php 
         use Core\Session;

@@ -1,7 +1,7 @@
 <?php view('partials/head.php'); ?>
 <?php view('partials/nav.php'); ?>
 
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8 mt-8">
     <h1 class="text-3xl font-bold text-center mb-8">Show Stats per Exercise</h1>
 
     <ul class="list-decimal list-inside">

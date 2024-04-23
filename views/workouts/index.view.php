@@ -17,7 +17,7 @@
 
 
 <!-- Section A: Button to create a new workout session -->
-<section id="create_session" class="pl-8 pb-6">
+<section id="create_session" class="pl-8 pb-6 mt-8">
     <h2 class="text-xl font-bold mb-4">Create a New Workout Session</h2>
     <a href="/add" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">Create Workout Session</a>
 </section>

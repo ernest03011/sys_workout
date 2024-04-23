@@ -1,7 +1,7 @@
 <?php view("partials/head.php"); ?>
 <?php view("partials/nav.php"); ?>
 
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 mt-8">
     <h1 class="text-3xl font-bold mb-8">Workout Sessions</h1>
 
     <!-- Section A: Displaying registered workout sessions -->

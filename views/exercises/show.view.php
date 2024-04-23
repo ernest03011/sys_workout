@@ -1,7 +1,7 @@
 <?php view('partials/head.php'); ?>
 <?php view('partials/nav.php'); ?>
 
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 mt-8">
     <div class="mt-8">
         <h2 class="text-2xl font-bold mb-4">Exercise Information</h2>
 
