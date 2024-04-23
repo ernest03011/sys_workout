@@ -1,6 +1,18 @@
 <?php view("partials/head.php"); ?>
 <?php view("partials/nav.php"); ?>
 
+<?php 
+    use Core\Session;
+    if(Session::has('error')){
+        echo "
+            <div class='bg-green-500 text-white px-4 py-2 rounded-md mb-4'>
+                <p>" . Session::get('error') . "</p>
+            </div>
+        ";
+    }
+
+?>
+
 <div class="container mx-auto px-4 mt-8">
     <h1 class="text-3xl font-bold mb-8">Workout Sessions</h1>
 
