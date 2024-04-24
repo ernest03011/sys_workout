@@ -1,14 +1,9 @@
 <?php view('partials/head.php'); ?>
 
 <?php
-    use Core\Session;
-    if(Session::has('token')){
-        echo "
-            <div class='bg-green-500 text-white px-4 py-2 rounded-md mb-4'>
-                <p>" . Session::get('token') . "</p>
-            </div>
-        ";
-    }
+
+    showMessage(['token']);
+
 ?>
 
 <form action="/auth-token" method="POST" class="mt-4">

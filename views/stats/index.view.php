@@ -2,14 +2,8 @@
 <?php view('partials/nav.php'); ?>
 
 <?php
-    use Core\Session;
-    if(Session::has('error')){
-        echo "
-            <div class='bg-green-500 text-white px-4 py-2 rounded-md mb-4'>
-                <p>" . Session::get('error') . "</p>
-            </div>
-        ";
-    }
+
+    showMessage(['error']);
 ?>
 
 <div class="container mx-auto px-4 py-8 mt-8">
