@@ -16,6 +16,8 @@ if(! Validator::string($workout_name, 1, 255)){
 }
 
 foreach ($exercises as $exercise) {
+
+  $exercise = json_decode($exercise);
   foreach ($exercise as $key => $value) {
     if(! Validator::string($value, 1, 255)){
       Router::redirect_with('/add',[
