@@ -1,5 +1,7 @@
 <?php
 
+use Core\Session;
+
 function dd($value)
 {
 
@@ -50,4 +52,25 @@ function replaceSpacesWithPercent20($string) {
 
 function getCurrentURI(){
   return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+}
+
+function showMessage($keys) {
+
+  $colorClass = [
+    'error' => 'bg-red-500',
+    'added_workout' => 'bg-green-500'
+
+  ];
+
+  foreach ($keys as $key) {
+
+    $color = $colorClass[$key] ?? "bg-green-500";
+      if (Session::has($key)) {
+          echo "
+              <div class='$color text-white px-4 py-2 rounded-md mb-4'>
+                  <p>" . htmlspecialchars(Session::get($key)) . "</p>
+              </div>
+          ";
+      }
+  }
 }
