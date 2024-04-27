@@ -41,7 +41,6 @@ function addExercisesToTheArray() {
   } else {
     const reps = document.querySelectorAll('[name="reps"]');
     const weight = document.querySelectorAll('[name="weight"]');
-    console.log(reps);
 
     let repsValues = Array.from(reps).map((rep) => {
       return rep.value;
@@ -67,12 +66,30 @@ function addExercisesToTheArray() {
 }
 
 function resetExerciseFormInputFields() {
-  exerciseName.value = "";
-  sets.value = "";
-  reps.value = "";
-  weight.value = "";
-  duration.value = "";
-  notes.value = "";
+  const myForm = document.forms["exercise_form"];
+
+  for (let i = 0; i < myForm.length; i++) {
+    const element = myForm[i];
+
+    if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+      console.log("Are you even being run?");
+      if (
+        element.type !== "submit" &&
+        element.type !== "button" &&
+        element.type !== "reset"
+      ) {
+        element.value = ""; // Reset value for input fields and textareas
+      }
+    } else {
+      console.log(element);
+      if (element.id === "sets") {
+        element.value = "1";
+        handleWeightRepsInputs();
+      } else if (element.id === "exercise_name") {
+        element.value = "--- Choose an Exercise name ---";
+      }
+    }
+  }
 }
 
 function resetValues() {
