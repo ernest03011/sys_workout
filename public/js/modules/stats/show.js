@@ -26,6 +26,12 @@ let repsChart = new Chart(repsChartCtx, {
         beginAtZero: true,
       },
     },
+    plugins: {
+      // Disable chart animations
+      animation: {
+        enabled: false,
+      },
+    },
   },
 });
 
@@ -37,7 +43,7 @@ let weightChart = new Chart(weightChartCtx, {
     labels: dates,
     datasets: [
       {
-        label: "Weight",
+        label: "Weight (Lbs)",
         data: weightData,
         borderColor: "rgb(255, 99, 132)",
         tension: 0.1,
@@ -48,6 +54,12 @@ let weightChart = new Chart(weightChartCtx, {
     scales: {
       y: {
         beginAtZero: true,
+      },
+    },
+    plugins: {
+      // Disable chart animations
+      animation: {
+        enabled: false,
       },
     },
   },
