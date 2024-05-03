@@ -1,6 +1,7 @@
 <?php view("partials/head.php"); ?>
 <?php view("partials/nav.php"); ?>
 
+<script src="../js/modules/workouts/main.js" type="module"></script>
 
 <div class="container mx-auto px-4 mt-8" id="create-workout-page">
 

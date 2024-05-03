@@ -1,3 +1,5 @@
+<script src="../js/modules/partials/nav.js"></script>
+
 <div class="min-h-full">
 
   <nav class="bg-gray-800">
