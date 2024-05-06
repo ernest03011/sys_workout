@@ -199,7 +199,7 @@ class FormHandler {
     const container = document.getElementById("strength");
     const sets = document.getElementById("sets");
     const setsValue = Number(sets.value);
-    container.innerHTML = "";
+    container.textContent = "";
 
     // Create a document fragment to hold the new input fields
     const fragment = document.createDocumentFragment();
