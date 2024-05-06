@@ -21,7 +21,8 @@ class Authenticator
       if($isPasswordVerified){
         $data = [
           'username' => $user['username'],
-          'user_id' => $user['user_id']
+          'user_id' => $user['user_id'], 
+          'email' => $user['email']
         ];
 
         $resp = self::sendToken($data);
@@ -97,7 +98,7 @@ class Authenticator
 
     $token = JWTHandler::encode($payload, 900);
 
-    $result = EmailToken::handler('Jhon Doe', $token);
+    $result = EmailToken::handler('Jhon Doe', $token, $data['email']);
 
     if(! $result){
       $success = false;

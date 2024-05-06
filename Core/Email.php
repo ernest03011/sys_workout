@@ -21,7 +21,7 @@ class Email {
     $mail->Password =  $_ENV['SMTP_PASSWORD'];
     $mail->setFrom("{$_ENV['SMTP_SET_FROM']}", 'Your Name');
     $mail->addReplyTo("{$_ENV['SMTP_ADD_REPLY_TO']}", 'Your Name');
-    $mail->addAddress("{$_ENV['SMTP_RECEIVER_ADDRESS']}", $params['receiver_name']);
+    $mail->addAddress($params['email'], $params['receiver_name']);
     $mail->Subject = 'Sys Workout';
     $mail->Body = $params['body'];
     
